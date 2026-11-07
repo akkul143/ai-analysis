@@ -1,0 +1,23 @@
+.DS_Store
+.env
+config/config.local.yaml
+
+# Go
+bin/
+coverage.out
+
+# TypeScript browser worker
+browser-worker/node_modules/
+browser-worker/dist/
+browser-worker/playwright-report/
+browser-worker/test-results/
+
+# Sensitive browser sessions and runtime cache
+data/auth/*
+!data/auth/.gitkeep
+data/cache/*
+!data/cache/.gitkeep
+
+# Generated reports
+reports/*
+!reports/.gitkeep

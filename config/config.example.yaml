@@ -1,0 +1,32 @@
+app:
+  name: ai-analysis
+  environment: local
+  logLevel: info
+
+database:
+  urlEnv: DATABASE_URL
+  connectTimeoutSeconds: 10
+
+schedule:
+  everyHours: 6
+  timezone: Asia/Kolkata
+  maxRunMinutes: 20
+
+# Phase 1 validates the worker boundary. Set enabled to true after running
+# `make browser-install browser-build`.
+browserWorker:
+  enabled: false
+  command: node
+  args:
+    - browser-worker/dist/src/index.js
+  healthTimeoutSeconds: 10
+
+reports:
+  directory: reports
+  formats:
+    - html
+    - markdown
+
+# Sources are intentionally empty in Phase 1. Real adapters arrive in Phase 2.
+directCareerSources: []
+thirdPartySources: []

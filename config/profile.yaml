@@ -1,0 +1,84 @@
+# Draft search profile seeded from verified resume work. Review these preferences
+# before Phase 2; the application never infers an unlisted skill.
+identity:
+  name: Akkul Gautam
+
+experience:
+  minimumJobYears: 1
+  maximumJobYears: 4
+
+titles:
+  preferred:
+    - Software Engineer
+    - Backend Engineer
+    - Distributed Systems Engineer
+  acceptable:
+    - Software Development Engineer
+    - Platform Engineer
+    - Data Platform Engineer
+  excluded:
+    - Engineering Manager
+    - Principal Engineer
+    - Staff Engineer
+    - Manual Tester
+
+locations:
+  preferred:
+    - Bengaluru
+    - Remote India
+  acceptable:
+    - Hyderabad
+    - Pune
+    - Delhi NCR
+  remote: true
+  hybrid: true
+  onsite: true
+  relocation: false
+
+skills:
+  strong:
+    - Rust
+    - TypeScript
+    - Apache Kafka
+    - ClickHouse
+    - PostgreSQL
+    - Redis
+    - REST APIs
+    - Distributed Systems
+    - AWS
+    - Docker
+    - Kubernetes
+    - OpenTelemetry
+  working:
+    - JavaScript
+    - Node.js
+    - SvelteJS
+    - ScyllaDB
+    - Jenkins
+    - Grafana
+    - Kibana
+    - OpenSearch
+  learning: []
+  notUsed:
+    - Apache Spark
+    - Apache Airflow
+    - Trino
+    - Hadoop
+    - Ansible
+
+domains:
+  preferred:
+    - Backend Engineering
+    - Distributed Systems
+    - Data Infrastructure
+    - Payments
+    - Analytics
+    - Cloud Infrastructure
+
+employment:
+  types:
+    - Full-time
+
+workAuthorization:
+  countries:
+    - India
