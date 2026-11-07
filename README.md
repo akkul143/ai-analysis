@@ -1,6 +1,6 @@
 # ai-analysis
 
-Personal job-discovery system. The repository is currently at **Phase 1: Local Foundation**.
+Personal system. The repository is currently at **Phase 1: Local Foundation**.
 
 Phase 1 validates the application boundary without calling real job websites. It loads and validates configuration and a candidate profile, connects to PostgreSQL, applies embedded SQL migrations, acquires a PostgreSQL advisory lock, persists a run record, checks the optional TypeScript browser-worker boundary, and releases the lock.
 
