@@ -10,8 +10,6 @@ import (
 	"github.com/akkul143/ai-analysis/internal/store/postgres"
 )
 
-var ErrRunAlreadyActive = errors.New("another job-finder run already holds the PostgreSQL advisory lock")
-
 type Service struct {
 	store  *postgres.Store
 	logger *slog.Logger
@@ -34,28 +32,13 @@ func (service *Service) Execute(
 	mode string,
 	metadata map[string]any,
 	work func(context.Context, string) error,
-) (summary Summary, returnError error) {
-	lock, acquired, err := service.store.AcquireRunLock(ctx)
-	if err != nil {
-		return Summary{}, err
-	}
-	if !acquired {
-		return Summary{}, ErrRunAlreadyActive
-	}
-	defer func() {
-		cleanupContext, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-		defer cancel()
-		if err := lock.Release(cleanupContext); err != nil {
-			returnError = errors.Join(returnError, err)
-		}
-	}()
-
+) (Summary, error) {
 	id, err := newID()
 	if err != nil {
 		return Summary{}, err
 	}
 	startedAt := time.Now().UTC()
-	summary = Summary{ID: id, Mode: mode, Status: "running", StartedAt: startedAt}
+	summary := Summary{ID: id, Mode: mode, Status: "running", StartedAt: startedAt}
 	if err := service.store.StartRun(ctx, postgres.RunRecord{
 		ID:        id,
 		Mode:      mode,

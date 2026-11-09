@@ -2,7 +2,7 @@
 
 Personal system. The repository is currently at **Phase 1: Local Foundation**.
 
-Phase 1 validates the application boundary without calling real job websites. It loads and validates configuration and a candidate profile, connects to PostgreSQL, applies embedded SQL migrations, acquires a PostgreSQL advisory lock, persists a run record, checks the optional TypeScript browser-worker boundary, and releases the lock.
+Phase 1 validates the application boundary without calling real job websites. It loads and validates configuration and a candidate profile, connects to PostgreSQL, applies embedded SQL migrations, persists an independent record for every invocation, and checks the optional TypeScript browser-worker boundary.
 
 ## Architecture
 
@@ -10,7 +10,6 @@ Phase 1 validates the application boundary without calling real job websites. It
 Go CLI
   -> YAML configuration + candidate profile
   -> PostgreSQL migrations
-  -> advisory run lock
   -> persisted run lifecycle
   -> optional TypeScript browser-worker health protocol
 ```
@@ -42,7 +41,6 @@ Expected output includes:
 Phase 1 dry run completed
 Status:      completed
 PostgreSQL:  connected
-Run lock:    acquired and released
 Run record:  persisted
 ```
 
@@ -100,7 +98,7 @@ Running without `--dry-run` fails deliberately. Real collection is Phase 2.
 - Editable candidate profile
 - PostgreSQL and embedded migration runner
 - Persisted `runs` table
-- PostgreSQL advisory run lock
+- Independent concurrent run records
 - Structured JSON logs via `log/slog`
 - Docker Compose with PostgreSQL and pgweb
 - TypeScript browser-worker protocol and tests

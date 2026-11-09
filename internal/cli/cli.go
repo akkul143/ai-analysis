@@ -75,7 +75,6 @@ func executeRun(arguments []string, stdout io.Writer, stderr io.Writer) error {
 	fmt.Fprintf(stdout, "Started:     %s\n", summary.StartedAt.Format(time.RFC3339))
 	fmt.Fprintf(stdout, "Completed:   %s\n", summary.CompletedAt.Format(time.RFC3339))
 	fmt.Fprintln(stdout, "PostgreSQL:  connected")
-	fmt.Fprintln(stdout, "Run lock:    acquired and released")
 	fmt.Fprintln(stdout, "Run record:  persisted")
 	return nil
 }
